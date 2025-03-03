@@ -13,58 +13,71 @@ class PatientMinHeapOriginal {
         this.heap = new Patient[capacity];
     }
 
-    // TODO: Students implement this method
     // Returns the index of the parent node
     private int parent(int i) {
-        return 0;
+        return (i-1)/2;
     }
 
-    // TODO: Students implement this method
     // Returns the index of the left child
     private int leftChild(int i) {
-        return 0;
+        return (2*i) + 1;
     }
 
-    // TODO: Students implement this method
     // Returns the index of the right child
     private int rightChild(int i) {
-        return 0;
+        return (2*i) + 2;
     }
 
-    // TODO: Students implement this method
     // Checks if the heap is empty
     public boolean isEmpty() {
-       return false;
+       return heap.length == 0;
     }
 
-    // TODO: Students implement this method
     // Returns the minimum patient without removing it
     public Patient getMin() {
-      return null;
+      return heap[0];
     }
 
-    // TODO: Students implement this method
     // Inserts a new patient into the heap
     public void insert(Patient patient) {
-        // Your code here
+        heap[size] = patient;
+        if(size != 0){
+            siftUp(size);
+        }
+        size++;
     }
 
-    // TODO: Students implement this method
+
     // Removes and returns the minimum patient
     public Patient extractMin() {
-        // Your code here
-        return null;
+        Patient min = getMin();
+        heap[0] = null;
+        if(size != 1) {
+            heap[0] = heap[size];
+            heap[size] = null;
+            siftDown(0);
+        }
+        size--;
+        return min;
     }
 
     // TODO: Students implement this method
     // Sifts a patient down from index i to maintain the min-heap property
     private void siftDown(int i) {
-        // Your code here
+        int index = i;
+       // while(heap[leftChild(i)])
+
     }
 
-    // TODO: Students implement this method
     // Sifts a patient up from index i to maintain the min-heap property
     private void siftUp(int i) {
-        // Your code here
+        int index = i;
+        while(heap[parent(index)].compareTo(heap[index]) > 0){ // check greater/smaller
+            // if parent is greater, float up
+            Patient parent = heap[parent(index)];
+            heap[parent(index)] = heap[index];
+            heap[index] = parent;
+            index = parent(index);
+        }
     }
 }

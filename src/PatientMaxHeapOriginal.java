@@ -9,34 +9,29 @@ class PatientMaxHeapOriginal {
         this.heap = new Patient[capacity];
     }
 
-    // TODO: Students implement this method
     // Returns the index of the parent node
     private int parent(int i) {
-        return 0;
+        return (i-1)/2;
     }
 
-    // TODO: Students implement this method
     // Returns the index of the left child
     private int leftChild(int i) {
-        return 0;
+        return (2*i) + 1;
     }
 
-    // TODO: Students implement this method
     // Returns the index of the right child
     private int rightChild(int i) {
-      return 0;
+      return (2*i) + 2;
     }
 
-    // TODO: Students implement this method
     // Checks if the heap is empty
     public boolean isEmpty() {
-        return false;
+        return heap.length == 0;
     }
 
-    // TODO: Students implement this method
     // Returns the maximum patient without removing it
     public Patient getMax() {
-       return null;
+       return heap[0];
     }
 
     // TODO: Students implement this method
