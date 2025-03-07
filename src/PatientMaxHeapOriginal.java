@@ -34,28 +34,58 @@ class PatientMaxHeapOriginal {
        return heap[0];
     }
 
-    // TODO: Students implement this method
     // Inserts a new patient into the heap
     public void insert(Patient patient) {
-        // Your code here
+        heap[size] = patient;
+        if(size != 0) {
+            siftUp(size);
+        }
+        size++;
     }
 
-    // TODO: Students implement this method
     // Removes and returns the maximum patient
     public Patient extractMax() {
-        // Your code here
-        return null;
+        Patient max = getMax();
+        heap[0] = null;
+        if(size != 1) {
+            heap[0] = heap[size-1];
+            heap[size-1] = null;
+            siftDown(0);
+        }
+        size--;
+        return max;
     }
 
-    // TODO: Students implement this method
+
     // Sifts a patient down from index i to maintain the max-heap property
     private void siftDown(int i) {
-        // Your code here
+        int greaterIndex = 0;
+        if(((leftChild(i) < size)&&(rightChild(i) < size)) && heap[leftChild(i)] != null && heap[rightChild(i)] != null) {
+            if (heap[leftChild(i)].compareTo(heap[rightChild(i)]) > 0) { // if left child is greater than right
+                greaterIndex = leftChild(i);
+            } else {
+                greaterIndex = rightChild(i);
+            }
+
+            if (heap[greaterIndex].compareTo(heap[i]) > 0) { // if child is greater than parent
+                // float parent down
+                Patient current = heap[i];
+                heap[i] = heap[greaterIndex];
+                heap[greaterIndex] = current;
+                siftDown(greaterIndex);
+            }
+        }
     }
 
-    // TODO: Students implement this method
     // Sifts a patient up from index i to maintain the max-heap property
     private void siftUp(int i) {
-        // Your code here
+        int index = i;
+        while(heap[parent(index)].compareTo(heap[index]) < 0){ // check greater
+            // if parent is smaller, float up
+            Patient parent = heap[parent(index)];
+            heap[parent(index)] = heap[index];
+            heap[index] = parent;
+            index = parent(index);
+        }
     }
 }

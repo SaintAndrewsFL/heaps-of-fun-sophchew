@@ -17,6 +17,15 @@
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello, World!");
+//        PatientMaxHeapOriginal patientMaxHeapOriginal = new PatientMaxHeapOriginal(100);
+//      for(int i = 0; i < 100; i++) {
+//          patientMaxHeapOriginal.insert(new Patient("jasdf",(int)(Math.random()*10),0));
+//      }
+//      for(int i = 0; i < 10; i++) {
+//          System.out.println(patientMaxHeapOriginal.extractMax());
+//      }
+//
+//    System.out.println(patientMaxHeapOriginal.size);
+//    System.out.println("Done");
     }
 }

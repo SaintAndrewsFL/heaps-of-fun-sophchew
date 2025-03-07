@@ -59,14 +59,13 @@ class PatientMinHeapOriginal {
             siftDown(0);
         }
         size--;
-        System.out.println(heap);
         return min;
     }
 
     // Sifts a patient down from index i to maintain the min-heap property
     private void siftDown(int i) {
         int smallerIndex = 0;
-        if(heap[leftChild(i)] != null && heap[rightChild(i)] != null) {
+        if(((leftChild(i) < size)&&(rightChild(i) < size)) && (heap[leftChild(i)] != null && heap[rightChild(i)] != null)) {
             if (heap[leftChild(i)].compareTo(heap[rightChild(i)]) < 0) { // if left child is smaller than right
                 smallerIndex = leftChild(i);
             } else {
